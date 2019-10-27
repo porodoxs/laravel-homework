@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'orders'], function () {
+    Route::get('/', 'OrderController@index');
+    Route::match(['get', 'put'], 'update/{id}', 'OrderController@update');
+});
+
+Route::get('/weather', 'WeatherController@index');
